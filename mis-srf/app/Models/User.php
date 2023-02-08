@@ -24,7 +24,7 @@ class User extends Authenticatable
         'current_ticket',
         'user_type',
         'technician_id',
-        'department_id'
+        'section_id'
     ];
 
     /**

@@ -17,15 +17,15 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('requestor_firstname', 50);
-            $table->string('requestor_middlename', 50)->default();
+            $table->string('requestor_middlename', 50)->nullable();
             $table->string('requestor_lastname', 50);
             $table->longText('description');
             $table->string('ticket_num')->unique();
             $table->unsignedBigInteger('request_category_id');
             $table->longText('actions_taken')->nullable();
             $table->longText('recommendations')->nullable();
-            $table->enum('status', ['active', 'pending', 'completed', 'denied','endorsed']);
-            $table->unsignedBigInteger('technician_id');
+            $table->enum('status', ['active', 'taken', 'pending', 'completed', 'denied','endorsed'])->default('active');
+            $table->unsignedBigInteger('technician_id')->nullable();
             $table->longText('remarks');
             $table->time('repair_start_time')->nullable();
             $table->time('repair_end_time')->nullable();

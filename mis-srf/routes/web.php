@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 Use App\Http\Controllers\AccountController;
 use App\Http\Controllers\TechnicianController;
 use App\Http\Controllers\TechStatusController;
+use App\Services\TicketingServices;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,12 @@ Route::group(['middleware' => ['auth']], function () {
 });
 Route::resource('technician/status', TechStatusController::class);
 Route::resource('technician', TechnicianController::class);
+
+Route::get('test', function () {
+    $ticketing = new TicketingServices();
+
+    return $ticketing->create_ticket_num();
+});
 
 
 

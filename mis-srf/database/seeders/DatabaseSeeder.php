@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('misr1mc'),
             'user_type' => 'admin'
         ]);
+
     }
 }

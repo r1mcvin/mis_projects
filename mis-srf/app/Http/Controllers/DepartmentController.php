@@ -2,25 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Request;
-use App\Services\TicketingServices;
+use App\Models\Department;
+use Exception;
 use Illuminate\Http\Request;
 
-class TicketController extends Controller
+class DepartmentController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $status = 'active';
-        if ($request->input('status'))
-        {
-            $status = $request->input('status');
-        }
-        return response()->json(Request::where('status', $status)->orderBy('created_at')->get());
+        return response()->json(Department::orderBy('name')->get());
     }
 
     /**
@@ -30,7 +25,7 @@ class TicketController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -39,18 +34,25 @@ class TicketController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, TicketingServices $services)
+    public function store(Request $request)
     {
-        // $init = $services->create();
+        try
+        {
+            
+        }
+        catch (Exception $exception)
+        {
+            
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show($id)
     {
         //
     }
@@ -58,10 +60,10 @@ class TicketController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit($id)
     {
         //
     }
@@ -70,10 +72,10 @@ class TicketController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Request $request)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -81,10 +83,10 @@ class TicketController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
         //
     }

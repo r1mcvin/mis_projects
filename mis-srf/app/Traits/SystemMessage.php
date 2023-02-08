@@ -12,6 +12,11 @@ trait SystemMessage {
         return 'Entry has been successfully added to our records!';
     }
 
+    public function wname_store_success()
+    {
+        return ' entry has been successfully added to our records!';
+    }
+
     public function store_fail()
     {
         return 'We have encountered some problem saving the record!';
