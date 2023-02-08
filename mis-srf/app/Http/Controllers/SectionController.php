@@ -46,7 +46,7 @@ class SectionController extends Controller
         ]);
  
         if ($validator->fails()) {
-            return response()->json($validator, '404');
+            return response()->json($validator, 404);
         }
 
         try
@@ -98,7 +98,7 @@ class SectionController extends Controller
         ]);
  
         if ($validator->fails()) {
-            return response()->json($validator, '404');
+            return response()->json($validator, 404);
         }
 
         try

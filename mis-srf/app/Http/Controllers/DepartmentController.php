@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
+use App\Traits\SystemMessage;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class DepartmentController extends Controller
 {
+    use SystemMessage;
     /**
      * Display a listing of the resource.
      *
@@ -38,11 +41,13 @@ class DepartmentController extends Controller
     {
         try
         {
-            
+            Department::create($request->post());
+            return response()->json($this->store_success());
         }
         catch (Exception $exception)
         {
-            
+            logger($exception);
+            return response()->json($this->exception());
         }
     }
 
@@ -52,9 +57,9 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Department $department)
     {
-        //
+        return response()->json(compact('department'));
     }
 
     /**
@@ -75,9 +80,15 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Department $department)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:departments|string,'.$department->id,
+        ]);
+ 
+        if ($validator->fails()) {
+            return response()->json($validator, 404);
+        }
     }
 
     /**
@@ -86,8 +97,17 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Department $department)
     {
-        //
+        try
+        {
+            $department->delete();
+            return response()->json($this->delete_success());
+        }
+        catch (Exception $exception)
+        {
+            logger($exception);
+            return response()->json($this->exception());
+        }
     }
 }
