@@ -18,9 +18,11 @@ return new class extends Migration
             $table->string('given_name', 50);
             $table->string('middle_name', 50);
             $table->string('last_name', 50);
-            $table->unsignedBigInteger('technician_status_id');
+            $table->unsignedBigInteger('technician_status_id')->nullable();
             $table->unsignedBigInteger('location_id')->nullable();
             $table->unsignedBigInteger('current_ticket')->nullable();
+
+            $table->unique(['given_name', 'middle_name', 'last_name']);
         });
     }
 

@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('customer_satisfaction_surveys', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('request_id');
+            $table->unsignedBigInteger('ticket_id');
             $table->unsignedBigInteger('overall_rating');
             $table->longText('remarks')->nullable();
 
-            $table->foreign('request_id')->references('id')->on('requests');
+            $table->foreign('ticket_id')->references('id')->on('tickets');
         });
 
     }

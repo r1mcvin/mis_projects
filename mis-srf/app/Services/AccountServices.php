@@ -16,7 +16,6 @@ class AccountServices {
 		}
 
 		$this->create_token($user);
-		
 		Auth::login($user);
 
 		session(['department' => $user->department]);
@@ -34,5 +33,25 @@ class AccountServices {
 		} while ($token_collections->contains($token));
 
 		$user->update(['remember_token' => $token]);
+	}
+
+	public function register($data)
+	{
+		$user = User::where('username', $data['username'])->first();
+
+		if ($user)
+		{
+			return ['error' => 'Username already exists, please choose another one!'];
+		}
+
+		User::create([
+			'username' => $data['username'],
+			'password' => Hash::make($data['password']),
+			'department_id' => $data['department_id'],
+			'technician_id' => ($data['technician_id']) ? $data['technician_id'] : null,
+			'user_type' => $data['data_type'], 
+		]);
+
+		return ['success' => 'Account has been successfully registered!'];
 	}
 }

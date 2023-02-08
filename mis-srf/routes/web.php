@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 Use App\Http\Controllers\AccountController;
+use App\Http\Controllers\TechnicianController;
+use App\Http\Controllers\TechStatusController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,4 +24,8 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth']], function () {
     Route::post('login', [AccountController::class, 'login'])->name('login.post');
 });
+Route::resource('technician/status', TechStatusController::class);
+Route::resource('technician', TechnicianController::class);
+
+
 
