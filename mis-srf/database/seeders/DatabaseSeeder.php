@@ -23,5 +23,13 @@ class DatabaseSeeder extends Seeder
             'user_type' => 'admin'
         ]);
 
+        $section = array(
+            ['name' => 'Management Information Services', 'short_name' => 'MIS', 'department_id' => 1],
+        );
+
+
+        $divisions = array(
+            ['name' => 'Hospital Operations and Patient Support Services', 'short_name' => 'HOPS'],
+        );
     }
 }

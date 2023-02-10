@@ -31,7 +31,7 @@ Route::resource('technician', TechnicianController::class);
 Route::get('test', function () {
     $ticketing = new TicketingServices();
 
-    return $ticketing->create_ticket_num();
+    return view('test');
 });
 
 
