@@ -24,24 +24,17 @@
     <title>Document</title>
 </head>
 <body>
-    @php
-        $value = [
-                'test1',
-                'test2',
-                'test3'
-            ];
-    @endphp
     <div class="container mt-5">
     <select id="normalize">
-  <option value=""></option>
-  <option value="1">Awesome</option>
-  <option value="2">Beast</option>
-  <option value="3">Compatible</option>
-  <option value="4">Thomas Edison</option>
-  <option value="5">Nikola</option>
-  <option value="6">Selectize</option>
-  <option value="7">Javascript</option>
-</select>
+        <option value=""></option>
+        <option value="1">Awesome</option>
+        <option value="2">Beast</option>
+        <option value="3">Compatible</option>
+        <option value="4">Thomas Edison</option>
+        <option value="5">Nikola</option>
+        <option value="6">Selectize</option>
+        <option value="7">Javascript</option>
+    </select>
     </div>
 <script>
     $(document).ready(function () {
