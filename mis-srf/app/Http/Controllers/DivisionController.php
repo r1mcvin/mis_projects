@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Department;
+use App\Models\Division;
 use App\Traits\SystemMessage;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class DepartmentController extends Controller
+class DivisionController extends Controller
 {
     use SystemMessage;
     /**
@@ -18,7 +18,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        return response()->json(Department::orderBy('name')->get());
+        return response()->json(Division::orderBy('name')->get());
     }
 
     /**
@@ -41,7 +41,7 @@ class DepartmentController extends Controller
     {
         try
         {
-            Department::create($request->post());
+            Division::create($request->post());
             return response()->json($this->store_success());
         }
         catch (Exception $exception)
@@ -57,7 +57,7 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Department $department)
+    public function show(Division $department)
     {
         return response()->json(compact('department'));
     }
@@ -80,10 +80,10 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Department $department)
+    public function update(Request $request, Division $department)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|unique:departments|string,'.$department->id,
+            'name' => 'required|unique:divisions|string,'.$department->id,
         ]);
  
         if ($validator->fails()) {
@@ -97,7 +97,7 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Department $department)
+    public function destroy(Division $department)
     {
         try
         {

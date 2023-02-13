@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 Use App\Http\Controllers\AccountController;
+use App\Http\Controllers\DivisionController;
+use App\Http\Controllers\SectionController;
 use App\Http\Controllers\TechnicianController;
 use App\Http\Controllers\TechStatusController;
 use App\Services\TicketingServices;
@@ -27,6 +29,9 @@ Route::group(['middleware' => ['auth']], function () {
 });
 Route::resource('technician/status', TechStatusController::class);
 Route::resource('technician', TechnicianController::class);
+Route::resource('division', DivisionController::class);
+Route::resource('section', SectionController::class);
+
 
 Route::get('test', function () {
     $ticketing = new TicketingServices();
